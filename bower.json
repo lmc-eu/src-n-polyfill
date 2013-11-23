@@ -1,0 +1,21 @@
+{
+  "name": "src-n-polyfill",
+  "main": "index.js",
+  "version": "0.1.0",
+  "authors": [
+    "Vojtech Vondra <vojtavondra@gmail.com>"
+  ],
+  "description": "src-n proposal polyfill",
+  "keywords": [
+    "src-n",
+    "polyfill",
+    "responsive",
+    "images"
+  ],
+  "dependencies": {
+    "src-n-parse": "git://github.com/robinpokorny/src-n-parse.git#master",
+    "matchmedia": "0.1.*",
+    "jquery": "1.*"
+  },
+  "license": "MIT"
+}
