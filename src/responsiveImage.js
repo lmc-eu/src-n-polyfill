@@ -59,6 +59,7 @@ module.exports = (function () {
             imageCandidates,
             imagePixelSize,
             imageTargetSize = "100%",
+            query,
             urls = rule.urls;
 
         // Determine which viewport we are targeting
@@ -71,7 +72,8 @@ module.exports = (function () {
             if (!viewport["viewport-size"]) {
                 break;
             }
-            if (!window.matchMedia("(min-width:" + viewport["viewport-size"].value + viewport["viewport-size"].unit + ")")) {
+            query = "(min-width:" + viewport["viewport-size"].value + viewport["viewport-size"].unit + ")";
+            if (!window.matchMedia(query).matches) {
                 break;
             }
         }
