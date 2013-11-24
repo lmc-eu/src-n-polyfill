@@ -9,7 +9,8 @@ module.exports = function(grunt) {
                 files: {
                     'built.js': [
                         'bower_components/src-n-parse/index.js',
-                        'index.js'
+                        'src/responsiveImage.js',
+                        'src/index.js'
                     ]
                 },
                 options: {
