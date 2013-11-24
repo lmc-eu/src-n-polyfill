@@ -1,4 +1,4 @@
-var $ = require('jquery');
+var $ = require('./shim-jquery.js');
 
 module.exports = (function () {
     /**

@@ -1,22 +1,23 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         watch: {
-            files: ['index.js'],
+            files: ['src/**/*.js'],
             tasks: ['browserify']
         },
         browserify: {
             main: {
                 files: {
                     'built.js': [
+                        'src/shim-jquery.js',
                         'bower_components/src-n-parse/index.js',
                         'src/responsiveImage.js',
                         'src/index.js'
                     ]
                 },
                 options: {
-                    shim:{
-                        jquery: { path: './bower_components/jquery/jquery.js', exports: '$' }
-                    },
+                    alias: [
+                        'src/shim-jquery.js:jquery'
+                    ],
                     transform: [
                         'debowerify', 'deamdify'
                     ]
