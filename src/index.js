@@ -4,14 +4,16 @@ var images = [];
 
 function buildCollection() {
     $('img[src-1]').each(function (index) {
-        var rules = [];
+        var rules = [],
+            el = $(this);
         $.each(this.attributes, function() {
             if (this.name.match(/src-[0-9]+/i)){
                 rules.push(parser.parse(this.value));
             }
         });
+        rules.push(parser.parse(el.attr('src')));
         images.push(new ResponsiveImage(
-            $(this),
+            el,
             rules
         ));
     });
