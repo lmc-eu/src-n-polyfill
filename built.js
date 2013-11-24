@@ -1843,11 +1843,14 @@ function buildCollection() {
         ));
     });
 }
-function renderAll() {
+var renderAll = function() {
+    console.log("RenderALL fired");
     $.each(images, function(index, img){
         img.setImage();
     });
 }
+exports.renderAll = renderAll;
+
 
 $(function() {
     var watchInterval;
