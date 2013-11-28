@@ -22,9 +22,20 @@ module.exports = function(grunt) {
             options: {
 
             }
+        },
+        uglify: {
+          options: {
+            report: 'gzip'
+          },
+          my_target: {
+            files: {
+            'src-n-polyfill.min.js': ['src-n-polyfill.js']
+            }
+          }
         }
     });
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['browserify']);
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.registerTask('default', ['browserify', 'uglify']);
 };

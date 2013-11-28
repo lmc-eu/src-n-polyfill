@@ -1,7 +1,6 @@
 {
   "name": "src-n-polyfill",
-  "main": "index.js",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "The src-N responsive image polyfill",
   "keywords": [
     "src-n",
@@ -10,9 +9,12 @@
     "image",
     "picturefill"
   ],
+  "main": [
+    "src-n-polyfill.js",
+    "src-n-polyfill.min.js"
+  ],
   "devDependencies": {
-    "src-n-parse": "0.3.1",
-    "matchmedia": "0.1.*"
+    "src-n-parse": "0.3.1"
   },
   "license": "MIT"
 }

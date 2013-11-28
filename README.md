@@ -3,6 +3,8 @@ src-n-polyfill
 
 Javascript SRC-N proposal for responsive images polyfill
 
+Only 2,3KB minified and gzipped.
+
 Based on [Proposal for RespImg Syntax](http://tabatkins.github.io/specs/respimg/Overview.html).
 
 Changelog
