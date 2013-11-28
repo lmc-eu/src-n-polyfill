@@ -1,5 +1,3 @@
-var $ = require('./shim-jquery.js');
-
 module.exports = (function () {
     /**
      * @constructor
@@ -14,6 +12,11 @@ module.exports = (function () {
     function hasMinimumResolution(res) {
         var operaFraction = res,
             fractionDenominator = 1;
+
+        if (window.devicePixelRatio > res) {
+            return true;
+        }
+
         res = parseFloat(res);
         res -= 0.01; // Hacky
         // FML opera O_o
@@ -27,12 +30,7 @@ module.exports = (function () {
             "(-o-min-device-pixel-ratio: " + operaFraction + "/" + fractionDenominator + ")," +
             "(min-resolution: " + res + "dppx)";
 
-        if (window.devicePixelRatio > res) {
-            return true;
-        }
-
         return window.matchMedia && window.matchMedia(mediaQuery).matches;
-
     }
 
     ResponsiveImage.prototype.setFromXBasedUrls = function(rule) {
@@ -44,13 +42,11 @@ module.exports = (function () {
         // List through available images and display closest match
         for (var j = 0; j < xurls.length; j++) {
             if (hasMinimumResolution(xurls[j].resolution.value)) {
-                this.image.attr("src", xurls[j].url);
-                console.log("Setting image URL to: " + xurls[j].url);
+                this.image.src = xurls[j].url;
                 return;
             }
         }
-        this.image.attr("src", xurls[0].url);
-        console.log("Setting image URL to: " + xurls[0].url);
+        this.image.src = xurls[0].url;
     };
 
     ResponsiveImage.prototype.setFromViewportUrls = function (rule) {
@@ -79,8 +75,11 @@ module.exports = (function () {
         }
 
         // Set the target with and detect what the resulting pixel size will be
-        this.image.width(imageTargetSize);
-        imagePixelSize = this.image.width();
+        this.image.style.width = imageTargetSize;
+        compStyle = window.getComputedStyle ?
+                    window.getComputedStyle(this.image, null) :
+                    this.image.currentStyle;
+        imagePixelSize = parseInt(compStyle.width, 10);
 
         // Find the image with the closest resolution
         imageCandidates = rule.urls["size-based-urls"].sort(function(a, b) {
@@ -94,7 +93,7 @@ module.exports = (function () {
         }
 
         // Set the selected image
-        this.image.attr("src", image);
+        this.image.src = image;
     };
 
     ResponsiveImage.prototype.setImage = function () {

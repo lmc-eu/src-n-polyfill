@@ -1,6 +1,6 @@
 {
   "name": "src-n-polyfill",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The src-N responsive image polyfill",
   "repository": {
     "type": "git",

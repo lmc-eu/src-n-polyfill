@@ -8,16 +8,12 @@ module.exports = function(grunt) {
             main: {
                 files: {
                     'src-n-polyfill.js': [
-                        'src/shim-jquery.js',
                         'bower_components/src-n-parse/index.js',
                         'src/responsiveImage.js',
                         'src/index.js'
                     ]
                 },
                 options: {
-                    alias: [
-                        'src/shim-jquery.js:jquery'
-                    ],
                     transform: [
                         'debowerify', 'deamdify'
                     ]
