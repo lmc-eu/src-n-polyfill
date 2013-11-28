@@ -1824,7 +1824,7 @@ module.exports = (function(){
 })();
 },{}],2:[function(require,module,exports){
 var ResponsiveImage = require('./responsiveImage.js');
-var parse = require("./../app/bower_components/src-n-parse/index.js").parse;
+var parse = require("./../components/src-n-parse/index.js").parse;
 var images = [];
 
 function addToCollection(element) {
@@ -1868,7 +1868,7 @@ window.srcnpolyfill = function() {
   }
 };
 
-},{"./../app/bower_components/src-n-parse/index.js":1,"./responsiveImage.js":3}],3:[function(require,module,exports){
+},{"./../components/src-n-parse/index.js":1,"./responsiveImage.js":3}],3:[function(require,module,exports){
 module.exports = (function () {
     /**
      * @constructor
@@ -1997,5 +1997,5 @@ module.exports = (function () {
     return ResponsiveImage;
 })();
 
-},{}]},{},[3,2])
+},{}]},{},[1,3,2])
 ;
