@@ -8,7 +8,7 @@ module.exports = function(grunt) {
             main: {
                 files: {
                     'src-n-polyfill.js': [
-                        'bower_components/src-n-parse/index.js',
+                        'components/src-n-parse/index.js',
                         'src/responsiveImage.js',
                         'src/index.js'
                     ]
@@ -28,4 +28,3 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.registerTask('default', ['browserify']);
 };
-
