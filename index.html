@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Responsive Image Polyfill Demo</title>
+	<script src="app/bower_components/src-n-polyfill/src-n-polyfill.js"></script>
+</head>
+<body>
+
+<img src-1="100%; images/pic100.jpg 100, images/pic200.jpg 200, images/pic300.jpg 300, images/pic400.jpg 400, images/pic500.jpg 500, images/pic600.jpg 600, images/pic800.jpg 800, images/pic1000.jpg 1000"
+     src="images/pic1000.jpg" />
+
+<hr />
+
+<img src-1="(max-width: 700px) images/pic320.jpg"
+     src-2="(max-width: 1000px) images/pic640.jpg"
+     src="images/pic1000.jpg" />
+
+<hr />
+
+<img src-1="18% (768px) 220px; images/pic320.jpg 130, images/pic640.jpg 300"
+     src="images/pic1000.jpg" />
+
+<hr />
+
+  <script>
+    window.srcnpolyfill();
+  </script>
+</body>
+</html>
