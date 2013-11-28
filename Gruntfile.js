@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         browserify: {
             main: {
                 files: {
-                    'built.js': [
+                    'src-n-polyfill.js': [
                         'src/shim-jquery.js',
                         'bower_components/src-n-parse/index.js',
                         'src/responsiveImage.js',

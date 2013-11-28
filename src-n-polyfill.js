@@ -955,26 +955,26 @@ module.exports = (function(){
         var pos0;
         
         pos0 = pos;
-        if (/^[A-Za-z0-9\-.\/]/.test(input.charAt(pos))) {
+        if (/^[A-Za-z0-9\-.\/:_%#~?&=]/.test(input.charAt(pos))) {
           result1 = input.charAt(pos);
           pos++;
         } else {
           result1 = null;
           if (reportFailures === 0) {
-            matchFailed("[A-Za-z0-9\\-.\\/]");
+            matchFailed("[A-Za-z0-9\\-.\\/:_%#~?&=]");
           }
         }
         if (result1 !== null) {
           result0 = [];
           while (result1 !== null) {
             result0.push(result1);
-            if (/^[A-Za-z0-9\-.\/]/.test(input.charAt(pos))) {
+            if (/^[A-Za-z0-9\-.\/:_%#~?&=]/.test(input.charAt(pos))) {
               result1 = input.charAt(pos);
               pos++;
             } else {
               result1 = null;
               if (reportFailures === 0) {
-                matchFailed("[A-Za-z0-9\\-.\\/]");
+                matchFailed("[A-Za-z0-9\\-.\\/:_%#~?&=]");
               }
             }
           }
@@ -1824,7 +1824,7 @@ module.exports = (function(){
 })();
 },{}],2:[function(require,module,exports){
 var ResponsiveImage = require('./responsiveImage.js');
-var parser = require("./..\\bower_components\\src-n-parse\\index.js");
+var parser = require("./../app/bower_components/src-n-parse/index.js");
 var images = [];
 
 function buildCollection() {
@@ -1843,14 +1843,11 @@ function buildCollection() {
         ));
     });
 }
-var renderAll = function() {
-    console.log("RenderALL fired");
+function renderAll() {
     $.each(images, function(index, img){
         img.setImage();
     });
 }
-exports.renderAll = renderAll;
-
 
 $(function() {
     var watchInterval;
@@ -1863,7 +1860,7 @@ $(function() {
         watchInterval = setTimeout(renderAll, 50);
     }).resize();
 });
-},{"./..\\bower_components\\src-n-parse\\index.js":1,"./responsiveImage.js":3}],3:[function(require,module,exports){
+},{"./../app/bower_components/src-n-parse/index.js":1,"./responsiveImage.js":3}],3:[function(require,module,exports){
 var $ = require('./shim-jquery.js');
 
 module.exports = (function () {
@@ -1992,9 +1989,9 @@ module.exports = (function () {
     };
     return ResponsiveImage;
 })();
-},{"./shim-jquery.js":"U2AT4S"}],"U2AT4S":[function(require,module,exports){
+},{"./shim-jquery.js":"m4c/sn"}],"m4c/sn":[function(require,module,exports){
 module.exports = window.jQuery;
 },{}],"jquery":[function(require,module,exports){
-module.exports=require('U2AT4S');
-},{}]},{},["U2AT4S",1,3,2])
+module.exports=require('m4c/sn');
+},{}]},{},["m4c/sn",3,2])
 ;

@@ -1,19 +1,17 @@
 {
   "name": "src-n-polyfill",
   "main": "index.js",
-  "version": "0.1.0",
-  "authors": [
-    "Vojtech Vondra <vojtavondra@gmail.com>"
-  ],
-  "description": "src-n proposal polyfill",
+  "version": "0.2.0",
+  "description": "The src-N responsive image polyfill",
   "keywords": [
     "src-n",
     "polyfill",
     "responsive",
-    "images"
+    "image",
+    "picturefill"
   ],
   "dependencies": {
-    "src-n-parse": "git://github.com/robinpokorny/src-n-parse.git#master",
+    "src-n-parse": "0.3.1",
     "matchmedia": "0.1.*",
     "jquery": "1.*"
   },

@@ -1,6 +1,18 @@
 {
   "name": "src-n-polyfill",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "description": "The src-N responsive image polyfill",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lmc-eu/src-n-polyfill.git"
+  },
+  "keywords": [
+    "src-n",
+    "polyfill",
+    "responsive",
+    "image",
+    "picturefill"
+  ],
   "devDependencies": {
     "mocha": "*",
     "should": "*",
@@ -11,8 +23,14 @@
     "debowerify": "~0.3.0",
     "deamdify": "~0.1.1"
   },
+  "author": "Robin Pokorný <robin@medvedi.eu>",
   "contributors": [
+    "Robin Pokorný <robin@medvedi.eu>",
     "Vojtěch Vondra <mail@vojtechvondra.cz>"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lmc-eu/src-n-polyfill/issues"
+  },
+  "homepage": "https://github.com/lmc-eu/src-n-polyfill"
 }
