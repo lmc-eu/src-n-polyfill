@@ -27,7 +27,7 @@ module.exports = function(grunt) {
           options: {
             report: 'gzip'
           },
-          my_target: {
+          main: {
             files: {
             'src-n-polyfill.min.js': ['src-n-polyfill.js']
             }

@@ -10,6 +10,6 @@ Based on [Proposal for RespImg Syntax](http://tabatkins.github.io/specs/respimg/
 Changelog
 ---------
 
-v0.3.0  jQuery independent
-v0.2.0  Reorganize and edit bower dependencies
-v0.1.0  Initial version
+- v0.3.0  jQuery independent
+- v0.2.0  Reorganize and edit bower dependencies
+- v0.1.0  Initial version
