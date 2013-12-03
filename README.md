@@ -13,3 +13,6 @@ Changelog
 - v0.3.0  jQuery independent
 - v0.2.0  Reorganize and edit bower dependencies
 - v0.1.0  Initial version
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/lmc-eu/src-n-polyfill/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
