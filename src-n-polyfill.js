@@ -1957,9 +1957,9 @@ module.exports = (function () {
             }
         }
 
+        // Percentages are relative to the viewport
         if (imageTargetSize.unit === '%') {
-            imageTargetSize.value = (imageTargetSize.value / 100) * window.innerWidth;
-            imageTargetSize.unit = 'px';
+            imageTargetSize = ((imageTargetSize.value / 100) * window.innerWidth) + 'px';
         }
         if (imageTargetSize.unit) {
             imageTargetSize = imageTargetSize.value + imageTargetSize.unit;
