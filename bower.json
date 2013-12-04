@@ -9,6 +9,6 @@
   "description": "Demo of the src-N polyfill",
   "license": "MIT",
   "dependencies": {
-    "src-n-polyfill": "~0.4.0"
+    "src-n-polyfill": "~0.4.2"
   }
 }

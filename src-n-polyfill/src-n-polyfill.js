@@ -1262,7 +1262,12 @@ module.exports = (function(){
           pos = pos1;
         }
         if (result0 !== null) {
-          result0 = (function(offset, parts) { return parts.join(""); })(pos0, result0);
+          result0 = (function(offset, parts) {
+            return {
+              unit: parts[1],
+              value: parts[0]
+            }
+          })(pos0, result0);
         }
         if (result0 === null) {
           pos = pos0;
@@ -1824,7 +1829,7 @@ module.exports = (function(){
 })();
 },{}],2:[function(require,module,exports){
 var ResponsiveImage = require('./responsiveImage.js');
-var parse = require("./../components/src-n-parse/index.js").parse;
+var parse = require('src-n-parse').parse;
 
 window.srcnpolyfill = function() {
   var images = [];
@@ -1878,7 +1883,7 @@ window.srcnpolyfill = function() {
   }
 };
 
-},{"./../components/src-n-parse/index.js":1,"./responsiveImage.js":3}],3:[function(require,module,exports){
+},{"./responsiveImage.js":3,"src-n-parse":1}],3:[function(require,module,exports){
 module.exports = (function () {
     /**
      * @constructor
@@ -1935,7 +1940,7 @@ module.exports = (function () {
             image,
             imageCandidates,
             imagePixelSize,
-            imageTargetSize = "100%",
+            imageTargetSize,
             query,
             urls = rule.urls;
 
@@ -1943,9 +1948,6 @@ module.exports = (function () {
         for (j = 0; j < urls["size-viewport-list"].length; j++) {
             var viewport = urls["size-viewport-list"][j];
             imageTargetSize = viewport["image-size"];
-            if (imageTargetSize.unit) {
-                imageTargetSize = imageTargetSize.value + imageTargetSize.unit;
-            }
             if (!viewport["viewport-size"]) {
                 break;
             }
@@ -1955,6 +1957,13 @@ module.exports = (function () {
             }
         }
 
+        // Percentages are relative to the viewport
+        if (imageTargetSize.unit === '%') {
+            imageTargetSize = ((imageTargetSize.value / 100) * window.innerWidth) + 'px';
+        }
+        if (imageTargetSize.unit) {
+            imageTargetSize = imageTargetSize.value + imageTargetSize.unit;
+        }
         // Set the target with and detect what the resulting pixel size will be
         this.image.style.width = imageTargetSize;
         compStyle = window.getComputedStyle ?
@@ -2007,5 +2016,5 @@ module.exports = (function () {
     return ResponsiveImage;
 })();
 
-},{}]},{},[1,3,2])
+},{}]},{},[2,3])
 ;

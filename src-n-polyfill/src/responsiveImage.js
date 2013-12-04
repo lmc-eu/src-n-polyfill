@@ -54,7 +54,7 @@ module.exports = (function () {
             image,
             imageCandidates,
             imagePixelSize,
-            imageTargetSize = "100%",
+            imageTargetSize,
             query,
             urls = rule.urls;
 
@@ -62,9 +62,6 @@ module.exports = (function () {
         for (j = 0; j < urls["size-viewport-list"].length; j++) {
             var viewport = urls["size-viewport-list"][j];
             imageTargetSize = viewport["image-size"];
-            if (imageTargetSize.unit) {
-                imageTargetSize = imageTargetSize.value + imageTargetSize.unit;
-            }
             if (!viewport["viewport-size"]) {
                 break;
             }
@@ -74,6 +71,13 @@ module.exports = (function () {
             }
         }
 
+        // Percentages are relative to the viewport
+        if (imageTargetSize.unit === '%') {
+            imageTargetSize = ((imageTargetSize.value / 100) * window.innerWidth) + 'px';
+        }
+        if (imageTargetSize.unit) {
+            imageTargetSize = imageTargetSize.value + imageTargetSize.unit;
+        }
         // Set the target with and detect what the resulting pixel size will be
         this.image.style.width = imageTargetSize;
         compStyle = window.getComputedStyle ?

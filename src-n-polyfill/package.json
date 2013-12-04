@@ -1,6 +1,6 @@
 {
   "name": "src-n-polyfill",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "The src-N responsive image polyfill",
   "repository": {
     "type": "git",
@@ -14,15 +14,14 @@
     "picturefill"
   ],
   "devDependencies": {
+    "src-n-parse": "~0.3.2",
     "mocha": "*",
     "should": "*",
     "grunt": "~0.4.2",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-browserify": "~1.2.11",
     "grunt-contrib-uglify": "~0.2.7",
-    "browserify": "~2.35.4",
-    "debowerify": "~0.3.0",
-    "deamdify": "~0.1.1"
+    "browserify": "~2.35.4"
   },
   "author": "Robin Pokorný <robin@medvedi.eu>",
   "contributors": [

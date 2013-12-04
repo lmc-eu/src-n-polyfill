@@ -1,6 +1,6 @@
 {
   "name": "src-n-polyfill",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "The src-N responsive image polyfill",
   "keywords": [
     "src-n",
@@ -13,18 +13,15 @@
     "src-n-polyfill.js",
     "src-n-polyfill.min.js"
   ],
-  "devDependencies": {
-    "src-n-parse": "0.3.1"
-  },
   "license": "MIT",
   "homepage": "https://github.com/lmc-eu/src-n-polyfill",
-  "_release": "0.4.0",
+  "_release": "0.4.2",
   "_resolution": {
     "type": "version",
-    "tag": "v0.4.0",
-    "commit": "0f88f644f511d1bff928b317f0910e1d8fee340c"
+    "tag": "v0.4.2",
+    "commit": "750da6d957b66d41e474738e80180b3ba1b18c97"
   },
   "_source": "git://github.com/lmc-eu/src-n-polyfill.git",
-  "_target": "~0.4.0",
+  "_target": "~0.4.2",
   "_originalSource": "src-n-polyfill"
 }
