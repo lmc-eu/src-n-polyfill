@@ -8,14 +8,8 @@ module.exports = function(grunt) {
             main: {
                 files: {
                     'src-n-polyfill.js': [
-                        'components/src-n-parse/index.js',
                         'src/responsiveImage.js',
                         'src/index.js'
-                    ]
-                },
-                options: {
-                    transform: [
-                        'debowerify', 'deamdify'
                     ]
                 }
             },
