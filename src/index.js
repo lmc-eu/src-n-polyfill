@@ -11,7 +11,11 @@ window.srcnpolyfill = function() {
 
     for (i = 0; i < attrs.length; ++i) {
       if (attrs[i].name.match(/^src(-[0-9]+)?$/i)) {
-        rules.push(parse(attrs[i].value));
+        try {
+          rules.push(parse(attrs[i].value));
+        } catch (e) {
+          /* Invalid src-n attribute, silently ingore like any other HTML you don't know */
+        }
       }
     }
 
