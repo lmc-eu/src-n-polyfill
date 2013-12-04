@@ -35,6 +35,12 @@ function renderAll() {
 }
 
 window.srcnpolyfill = function() {
+
+  // Browsers not supporting ES5 are not responsive anyway
+  if (!Array.prototype.forEach || !window.matchMedia) {
+    return;
+  }
+
   buildCollection();
   renderAll();
 

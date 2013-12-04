@@ -1860,6 +1860,12 @@ function renderAll() {
 }
 
 window.srcnpolyfill = function() {
+
+  // Browsers not supporting ES5 are not responsive anyway
+  if (!Array.prototype.forEach || !window.matchMedia) {
+    return;
+  }
+
   buildCollection();
   renderAll();
 
@@ -1997,5 +2003,5 @@ module.exports = (function () {
     return ResponsiveImage;
 })();
 
-},{}]},{},[1,3,2])
+},{}]},{},[1,2,3])
 ;
