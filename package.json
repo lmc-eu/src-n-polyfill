@@ -1,7 +1,8 @@
 {
   "name": "src-n-polyfill",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "The src-N responsive image polyfill",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/lmc-eu/src-n-polyfill.git"
@@ -13,8 +14,10 @@
     "image",
     "picturefill"
   ],
+  "dependencies": {
+      "src-n-parse": "~0.3.2"
+  },
   "devDependencies": {
-    "src-n-parse": "~0.3.2",
     "mocha": "*",
     "should": "*",
     "grunt": "~0.4.2",
