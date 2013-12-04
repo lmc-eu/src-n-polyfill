@@ -3,11 +3,12 @@
   "version": "0.3.0",
   "homepage": "https://github.com/lmc-eu/src-n-polyfill",
   "authors": [
-    "Robin Pokorný <robin@medvedi.eu>"
+    "Robin Pokorný <robin@medvedi.eu>",
+    "Vojtěch Vondra <vojtavondra@gmail.com>"
   ],
   "description": "Demo of the src-N polyfill",
   "license": "MIT",
   "dependencies": {
-    "src-n-polyfill": "~0.3.1"
+    "src-n-polyfill": "~0.4.0"
   }
 }
