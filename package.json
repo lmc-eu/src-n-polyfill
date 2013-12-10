@@ -1,6 +1,6 @@
 {
   "name": "src-n-polyfill",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "The src-N responsive image polyfill",
   "main": "src/index.js",
   "repository": {

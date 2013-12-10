@@ -1904,7 +1904,6 @@ module.exports = (function () {
         }
 
         res = parseFloat(res);
-        res -= 0.01; // Hacky
         // FML opera O_o
         while (operaFraction % 1 > 0) {
             operaFraction *= 10;
@@ -1970,6 +1969,7 @@ module.exports = (function () {
                     window.getComputedStyle(this.image, null) :
                     this.image.currentStyle;
         imagePixelSize = parseInt(compStyle.width, 10);
+        imagePixelSize = window.devicePixelRatio ? imagePixelSize * window.devicePixelRatio : imagePixelSize;
 
         // Find the image with the closest resolution
         imageCandidates = rule.urls["size-based-urls"].sort(function(a, b) {
@@ -2016,5 +2016,5 @@ module.exports = (function () {
     return ResponsiveImage;
 })();
 
-},{}]},{},[2,3])
+},{}]},{},[3,2])
 ;
