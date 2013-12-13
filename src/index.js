@@ -5,21 +5,39 @@ window.srcnpolyfill = function() {
   var images = [];
 
   function createResponsiveImage(element) {
-    var i,
-        rules = [],
-        attrs = element.attributes;
+    var i, m, rule,
+        candidates = [],
+        attrs = element.attributes,
+        re = /^src-([0-9][1-9]*)$/i;
 
     for (i = 0; i < attrs.length; ++i) {
-      if (attrs[i].name.match(/^src(-[0-9]+)?$/i)) {
+      m = attrs[i].name.match(re);
+      if (m) {
         try {
-          rules.push(parse(attrs[i].value));
+          rule = parse(attrs[i].value);
         } catch (e) {
-          /* Invalid src-n attribute, silently ingore like any other HTML you don't know */
+          /* Invalid src-n attribute, silently ignore like any other HTML you don't know */
+          break;
         }
+        candidates.push({
+          rule: rule,
+          index: parseInt(m[1], 10)
+        });
       }
     }
 
-    return new ResponsiveImage(element, rules);
+    candidates.sort(function (a, b) {
+      return a.index - b.index;
+    });
+
+    if (attrs.src && attrs.src.value) {
+      candidates.push({
+        rule: parse(attrs.src.value),
+        index: 0
+      });
+    }
+
+    return new ResponsiveImage(element, candidates);
   }
 
   function buildCollection() {

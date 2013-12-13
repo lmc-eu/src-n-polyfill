@@ -2,11 +2,11 @@ module.exports = (function () {
     /**
      * @constructor
      * @param {jQuery} image
-     * @param {Array} rules
+     * @param {Array} candidates
      */
-    function ResponsiveImage(image, rules) {
+    function ResponsiveImage(image, candidates) {
         this.image = image;
-        this.rules = rules;
+        this.candidates = candidates;
     }
 
     function hasMinimumResolution(res) {
@@ -35,7 +35,7 @@ module.exports = (function () {
     ResponsiveImage.prototype.setFromXBasedUrls = function(rule) {
         // Sort from highest resolution
         var xurls = rule.urls.urls.sort(function (a, b) {
-            return a.resolution.value > b.resolution.value;
+            return a.resolution.value - b.resolution.value;
         });
 
         // List through available images and display closest match
@@ -101,8 +101,9 @@ module.exports = (function () {
     };
 
     ResponsiveImage.prototype.setImage = function () {
-        for (var i = 0; i < this.rules.length; i++) {
-            var query, rule = this.rules[i];
+        for (var i = 0; i < this.candidates.length; i++) {
+            var query,
+                rule = this.candidates[i].rule;
             if (!rule.type || rule.type != 'src-n-attribute') {
                 continue;
             }

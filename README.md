@@ -32,6 +32,7 @@ If you need IE 8 or IE 9 support, use the corresponding polyfills.
 Changelog
 ---------
 
+- v0.5.0  Fix a candidates order bug
 - v0.4.0  Rewritten scope and dropped support for IE <= 9
 - v0.3.0  jQuery independent
 - v0.2.0  Reorganize and edit bower dependencies
