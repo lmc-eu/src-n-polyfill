@@ -1835,21 +1835,39 @@ window.srcnpolyfill = function() {
   var images = [];
 
   function createResponsiveImage(element) {
-    var i,
-        rules = [],
-        attrs = element.attributes;
+    var i, m, rule,
+        candidates = [],
+        attrs = element.attributes,
+        re = /^src-([0-9][1-9]*)$/i;
 
     for (i = 0; i < attrs.length; ++i) {
-      if (attrs[i].name.match(/^src(-[0-9]+)?$/i)) {
+      m = attrs[i].name.match(re);
+      if (m) {
         try {
-          rules.push(parse(attrs[i].value));
+          rule = parse(attrs[i].value);
         } catch (e) {
-          /* Invalid src-n attribute, silently ingore like any other HTML you don't know */
+          /* Invalid src-n attribute, silently ignore like any other HTML you don't know */
+          break;
         }
+        candidates.push({
+          rule: rule,
+          index: parseInt(m[1], 10)
+        });
       }
     }
 
-    return new ResponsiveImage(element, rules);
+    candidates.sort(function (a, b) {
+      return a.index - b.index;
+    });
+
+    if (attrs.src && attrs.src.value) {
+      candidates.push({
+        rule: parse(attrs.src.value),
+        index: 0
+      });
+    }
+
+    return new ResponsiveImage(element, candidates);
   }
 
   function buildCollection() {
@@ -1888,11 +1906,11 @@ module.exports = (function () {
     /**
      * @constructor
      * @param {jQuery} image
-     * @param {Array} rules
+     * @param {Array} candidates
      */
-    function ResponsiveImage(image, rules) {
+    function ResponsiveImage(image, candidates) {
         this.image = image;
-        this.rules = rules;
+        this.candidates = candidates;
     }
 
     function hasMinimumResolution(res) {
@@ -1904,7 +1922,6 @@ module.exports = (function () {
         }
 
         res = parseFloat(res);
-        res -= 0.01; // Hacky
         // FML opera O_o
         while (operaFraction % 1 > 0) {
             operaFraction *= 10;
@@ -1922,7 +1939,7 @@ module.exports = (function () {
     ResponsiveImage.prototype.setFromXBasedUrls = function(rule) {
         // Sort from highest resolution
         var xurls = rule.urls.urls.sort(function (a, b) {
-            return a.resolution.value > b.resolution.value;
+            return a.resolution.value - b.resolution.value;
         });
 
         // List through available images and display closest match
@@ -1970,6 +1987,7 @@ module.exports = (function () {
                     window.getComputedStyle(this.image, null) :
                     this.image.currentStyle;
         imagePixelSize = parseInt(compStyle.width, 10);
+        imagePixelSize = window.devicePixelRatio ? imagePixelSize * window.devicePixelRatio : imagePixelSize;
 
         // Find the image with the closest resolution
         imageCandidates = rule.urls["size-based-urls"].sort(function(a, b) {
@@ -1987,8 +2005,9 @@ module.exports = (function () {
     };
 
     ResponsiveImage.prototype.setImage = function () {
-        for (var i = 0; i < this.rules.length; i++) {
-            var query, rule = this.rules[i];
+        for (var i = 0; i < this.candidates.length; i++) {
+            var query,
+                rule = this.candidates[i].rule;
             if (!rule.type || rule.type != 'src-n-attribute') {
                 continue;
             }
