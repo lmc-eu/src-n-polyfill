@@ -1,6 +1,5 @@
 {
   "name": "src-n-polyfill",
-  "version": "0.5.1",
   "description": "The src-N responsive image polyfill",
   "keywords": [
     "src-n",

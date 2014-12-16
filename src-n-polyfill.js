@@ -955,26 +955,26 @@ module.exports = (function(){
         var pos0;
         
         pos0 = pos;
-        if (/^[A-Za-z0-9\-.\/:_%#~?&=]/.test(input.charAt(pos))) {
+        if (/^[^ \t\r\n\f]/.test(input.charAt(pos))) {
           result1 = input.charAt(pos);
           pos++;
         } else {
           result1 = null;
           if (reportFailures === 0) {
-            matchFailed("[A-Za-z0-9\\-.\\/:_%#~?&=]");
+            matchFailed("[^ \\t\\r\\n\\f]");
           }
         }
         if (result1 !== null) {
           result0 = [];
           while (result1 !== null) {
             result0.push(result1);
-            if (/^[A-Za-z0-9\-.\/:_%#~?&=]/.test(input.charAt(pos))) {
+            if (/^[^ \t\r\n\f]/.test(input.charAt(pos))) {
               result1 = input.charAt(pos);
               pos++;
             } else {
               result1 = null;
               if (reportFailures === 0) {
-                matchFailed("[A-Za-z0-9\\-.\\/:_%#~?&=]");
+                matchFailed("[^ \\t\\r\\n\\f]");
               }
             }
           }

@@ -32,6 +32,7 @@ If you need IE 8 or IE 9 support, use the corresponding polyfills.
 Changelog
 ---------
 
+- v0.5.2  Support unicode characters in URL
 - v0.5.1  Enable use with Browserify and Debowerify
 - v0.5.0  Fix a candidates order bug
 - v0.4.0  Rewritten scope and dropped support for IE <= 9
